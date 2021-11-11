@@ -21,7 +21,7 @@ public class BFS extends Solver {
 		
 		int nodes_expanded=0;
 		long start = System.nanoTime();
-		List<String> path = null;
+		List<String> path = new Linkedlist<String>();
 		
 		while (!frontier.isEmpty()) {
 			String state = frontier.remove();			
@@ -33,7 +33,7 @@ public class BFS extends Solver {
 				path = solve_path(start_state, goal, seen);
 //				for(String p : path)
 //					System.out.print(p + " ");
-				return new Solution(path,path.size(),nodes_expanded,path.size(),elapsedTime);
+				return new Solution(path,path.size(),nodes_expanded,path.size()+1,elapsedTime);
 			}
 			
 			List<String> moves = make_move(state);

@@ -21,11 +21,11 @@ public class DFS extends Solver {
 		
 		seen.put(start_state, null);
 		frontier.add(start_state);
-		Depth.put(start_state, 0);
+		Depth.put(start_state, 1);
 		
 		int nodes_expanded=0;
 		long start = System.nanoTime();
-		List<String> path = null;
+		List<String> path = new Linkedlist<String>();
 		while (!frontier.isEmpty()) {
 			String state = frontier.pop();			
 			if (state.equals(goal)) {
@@ -55,7 +55,7 @@ public class DFS extends Solver {
 		long end = System.nanoTime();
 		long elapsedTime = end - start;
 		int max_depth=Collections.max(Depth.values());
-		return new Solution(null,0,nodes_expanded,max_depth,elapsedTime);
+		return new Solution(null,path.size(),nodes_expanded,max_depth,elapsedTime);
 	}
 
 	public static void main(String[] args) {
