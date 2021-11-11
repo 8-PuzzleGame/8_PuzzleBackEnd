@@ -2,6 +2,7 @@ package algorithms;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -23,9 +24,9 @@ public class DFS extends Solver {
 		frontier.add(start_state);
 		Depth.put(start_state, 0);
 		
-		int nodes_expanded=0;
+		int nodes_expanded=1;
 		long start = System.nanoTime();
-		List<String> path = null;
+		List<String> path = new LinkedList<String>();;
 		while (!frontier.isEmpty()) {
 			String state = frontier.pop();			
 			if (state.equals(goal)) {
