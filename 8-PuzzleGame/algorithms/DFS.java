@@ -21,9 +21,9 @@ public class DFS extends Solver {
 		
 		seen.put(start_state, null);
 		frontier.add(start_state);
-		Depth.put(start_state, 1);
+		Depth.put(start_state, 0);
 		
-		int nodes_expanded=0;
+		int nodes_expanded=1;
 		long start = System.nanoTime();
 		List<String> path = new Linkedlist<String>();
 		while (!frontier.isEmpty()) {
