@@ -37,6 +37,7 @@ public class Controller {
 			break;
 		case 3:
 			s = new A_star();
+			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + methodId);
 		}
