@@ -18,7 +18,7 @@ public class DFS extends Solver {
 		HashMap<String, String> seen = new HashMap<String, String>();
 		Stack<String> frontier = new Stack<String>();
 		HashMap<String,Integer> Depth = new HashMap<String,Integer >();
-		
+		 
 		seen.put(start_state, null);
 		frontier.add(start_state);
 		Depth.put(start_state, 0);
