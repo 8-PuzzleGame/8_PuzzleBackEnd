@@ -61,7 +61,7 @@ public class Controller {
 		obj.put("path", s.path);
 		obj.put("nodes_expanded", s.nodes_expanded);
 		obj.put("search_depth", s.search_depth);
-		obj.put("time", s.time);
+		obj.put("time", s.time/1000000);
 		return obj.toString();
 	}
 
