@@ -13,7 +13,7 @@ public class DFS extends Solver {
 		
 		return Dfs(state,goal);
 	}
-
+ 
 	private Solution Dfs(String start_state, String goal) {
 		HashMap<String, String> seen = new HashMap<String, String>();
 		Stack<String> frontier = new Stack<String>();

@@ -35,7 +35,7 @@ public class BFS extends Solver {
 //					System.out.print(p + " ");
 				return new Solution(path,path.size(),nodes_expanded,path.size()+1,elapsedTime);
 			}
-			
+			 
 			List<String> moves = make_move(state);
 			
 			for (String move : moves) {
