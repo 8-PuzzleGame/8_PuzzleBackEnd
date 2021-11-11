@@ -18,7 +18,7 @@ public class BFS extends Solver {
 		
 		seen.put(start_state, null);
 		frontier.add(start_state);
-		
+		 
 		int nodes_expanded=1;
 		long start = System.nanoTime();
 		List<String> path = new Linkedlist<String>();
