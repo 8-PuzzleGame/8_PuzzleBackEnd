@@ -45,7 +45,7 @@ public class BFS extends Solver {
 					frontier.add(move);
 				}
 			}
-		} 
+		}  
 		long end = System.nanoTime();
 		long elapsedTime = end - start;
 		return new Solution(null,0,nodes_expanded,path.size(),elapsedTime);

@@ -50,7 +50,7 @@ public class DFS extends Solver {
 					seen.put(move, state);
 					frontier.push(move);
 				}
-			}
+			} 
 		}
 		long end = System.nanoTime();
 		long elapsedTime = end - start;
