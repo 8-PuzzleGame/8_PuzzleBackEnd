@@ -40,7 +40,7 @@ public class DFS extends Solver {
 //				System.out.print("\n" + max_depth+"   "+nodes_expanded);
 				return new Solution(path,path.size(),nodes_expanded,max_depth,elapsedTime);
 			}
-			
+			 
 			List<String> moves = make_move(state);
 			
 			for (String move : moves) {
