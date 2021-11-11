@@ -14,6 +14,7 @@ public class UI {
 	public static void main(String[] args) {
 //		("123458067", "123456780")
 // 		no solution for this: 812043765 
+		//867254301
 		try {
 			func = (Void) -> chooseAlgorithm();
 			while (true) {
