@@ -8,13 +8,11 @@ import java.util.Stack;
 
 public class DFS extends Solver {
 	
-	
 	@Override
 	public Solution Solve(String state, String goal) {
 		
 		return Dfs(state,goal);
 	}
-
 	private Solution Dfs(String start_state, String goal) {
 		HashMap<String, String> seen = new HashMap<String, String>();
 		Stack<String> frontier = new Stack<String>();
@@ -32,13 +30,9 @@ public class DFS extends Solver {
 			if (state.equals(goal)) {
 				long end = System.nanoTime();
 				long elapsedTime = end - start;
-				
-//				System.out.println("Goal");
 				path = solve_path(start_state, goal, seen);
-//				for(String p : path)
-//					System.out.print(p + " ");
+
 				int max_depth=Collections.max(Depth.values());
-//				System.out.print("\n" + max_depth+"   "+nodes_expanded);
 				return new Solution(path,path.size(),nodes_expanded,max_depth,elapsedTime);
 			}
 			
@@ -57,12 +51,5 @@ public class DFS extends Solver {
 		long elapsedTime = end - start;
 		int max_depth=Collections.max(Depth.values());
 		return new Solution(null,0,nodes_expanded,max_depth,elapsedTime);
-	}
-
-	public static void main(String[] args) {
-		Solver s = new DFS();
-		// ['Up', 'Right', 'Down', 'Right', 'Up', 'Left', 'Left', 'Down', 'Right',
-		// 'Right']
-		s.Solve("1234580676", "1234567808");
 	}
 }
