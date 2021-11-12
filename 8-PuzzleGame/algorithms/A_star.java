@@ -16,6 +16,7 @@ public class A_star extends Solver {
 
 	@Override
 	public Solution Solve(String state, String goal) {
+		
 		long t1 = System.nanoTime();
 		ArrayList<Pair> expanded = AStTree(state, goal);
 		long time = System.nanoTime() - t1;
