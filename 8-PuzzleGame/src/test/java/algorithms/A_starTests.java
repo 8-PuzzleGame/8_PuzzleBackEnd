@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 
 class A_starTests extends A_star {
 
+	public A_starTests(int h) {
+		super(h);
+	}
+
 	@Test
 	void heuristic1Tests() {
 		assertEquals(manhattanDistance("123456780", "123456780"), 0);
