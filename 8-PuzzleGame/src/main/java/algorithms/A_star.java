@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class A_star extends Solver {
+	private int h;
 
-	public static void main(String[] args) {
-		A_star a = new A_star();
-		a.Solve("1234567087", "1234567808");
+	public A_star(int h) {
+		this.h = h;
 	}
 
 	@Override
@@ -19,8 +19,8 @@ public class A_star extends Solver {
 		long t1 = System.nanoTime();
 		ArrayList<Pair> expanded = AStTree(state, goal);
 		long time = System.nanoTime() - t1;
-		if(expanded.get(expanded.size()-1).state.equalsIgnoreCase("0000000000")) {
-			return new Solution(null,0,expanded.size()-1,searchDepth(expanded),time);
+		if (expanded.get(expanded.size() - 1).state.equalsIgnoreCase("0000000000")) {
+			return new Solution(null, 0, expanded.size() - 1, searchDepth(expanded), time);
 		}
 		Pair last = expanded.get(expanded.size() - 1);
 		int cost = 0;
@@ -33,11 +33,11 @@ public class A_star extends Solver {
 	private List<String> getPath(Pair goal) {
 		LinkedList<String> path = new LinkedList<>();
 		int len = goal.state.length() - 1;
-		
+
 		while (goal.parent != null) {
-			int emp =  Character.getNumericValue(goal.state.charAt(len));
+			int emp = Character.getNumericValue(goal.state.charAt(len));
 			int p_emp = Character.getNumericValue(goal.parent.state.charAt(len));
-			
+
 			if (emp == p_emp - 3)
 				path.addFirst("Up");
 			else if (emp == p_emp + 3)
@@ -46,7 +46,7 @@ public class A_star extends Solver {
 				path.addFirst("Left");
 			else if (emp == p_emp + 1)
 				path.addFirst("Right");
-			
+
 			goal = goal.parent;
 		}
 		return path;
@@ -60,6 +60,7 @@ public class A_star extends Solver {
 		}
 		return max;
 	}
+
 	private ArrayList<Pair> AStTree(String state, String goal) {
 		PriorityQueue<Pair> frontier = new PriorityQueue<Pair>(1, new PairComparator());
 		frontier.add(new Pair(state, 0, null));
@@ -73,25 +74,24 @@ public class A_star extends Solver {
 			}
 			map.put(current.state, 1);
 			expanded.add(current);
-			if (current.state.equalsIgnoreCase(goal)) {				
+			if (current.state.equalsIgnoreCase(goal)) {
 				return expanded;
 			} else {
 				List<String> list = make_move(current.state);
 				for (int i = 0; i < list.size(); i++) {
 					String child = list.get(i);
+					double heuristic = h == 1 ? manhattanDistance(child, goal) : euclideanDistance(child, goal);
 					if (!frontierMap.containsKey(child) && !map.containsKey(child)) {
-						Pair pair = new Pair(child,
-								manhattanDistance(child, goal) + current.cost + 1, current);
-						frontier.add(pair);					
+						Pair pair = new Pair(child, heuristic + current.cost + 1, current);
+						frontier.add(pair);
 						frontierMap.put(child, pair);
-					
-					} else if (frontierMap.containsKey(child) ) {
+
+					} else if (frontierMap.containsKey(child)) {
 						Pair p = frontierMap.get(child);
-						if ((manhattanDistance(child, goal)+ current.cost + 1) < p.cost) {
+						if ((heuristic + current.cost + 1) < p.cost) {
 							frontier.remove(p);
 							frontierMap.remove(child);
-							Pair pair = new Pair(child,
-									manhattanDistance(child, goal) + current.cost + 1, current);
+							Pair pair = new Pair(child, heuristic + current.cost + 1, current);
 							frontier.add(pair);
 							frontierMap.put(child, pair);
 						}
@@ -99,14 +99,13 @@ public class A_star extends Solver {
 				}
 			}
 		}
-		expanded.add(new Pair("0000000000",0,null));
+		expanded.add(new Pair("0000000000", 0, null));
 		return expanded;
 	}
 
-
 	protected double manhattanDistance(String state, String goal) {
-		state = state.substring(0, state.length()-1);
-		goal = goal.substring(0, goal.length()-1);
+		state = state.substring(0, state.length() - 1);
+		goal = goal.substring(0, goal.length() - 1);
 		double sum = 0;
 		for (char a : state.toCharArray()) {
 			int curIndex = state.indexOf(a);

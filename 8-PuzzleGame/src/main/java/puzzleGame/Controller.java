@@ -36,7 +36,10 @@ public class Controller {
 			s = new DFS();
 			break;
 		case 3:
-			s = new A_star();
+			s = new A_star(1);
+			break;
+		case 4:
+			s = new A_star(2);
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + methodId);

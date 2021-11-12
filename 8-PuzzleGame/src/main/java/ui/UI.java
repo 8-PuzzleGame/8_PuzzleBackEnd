@@ -40,7 +40,7 @@ public class UI {
 				solver = new DFS();
 				func = (Void) -> enterGoal();
 			} else if (input == 3) {
-				solver = new A_star();
+				solver = new A_star(1);
 				func = (Void) -> enterGoal();
 			} else if (input == 4)
 				func = (Void) -> compareMode();
@@ -148,7 +148,7 @@ public class UI {
 				continue;
 			}
 			System.out.println("\n=== A* ===");
-			Solver solver = new A_star();
+			Solver solver = new A_star(1);
 			solve(solver, state, goal, false);
 
 			System.out.println("\n=== BFS ===");
