@@ -14,7 +14,7 @@ public class DFS extends Solver {
 		
 		return Dfs(state,goal);
 	}
-	
+	 
 	// DFS algorithm
 	private Solution Dfs(String start_state, String goal) {
 		HashMap<String, String> seen = new HashMap<String, String>(); 	// store all frontier and explored state here to check in O(1).

@@ -13,7 +13,7 @@ public class BFS extends Solver {
 	public Solution Solve(String state, String goal) {
 		return Bfs(state, goal);
 	}
-	
+	 
 	// BFS algorithm
 	private Solution Bfs(String start_state, String goal) {
 		HashMap<String, String> seen = new HashMap<String, String>(); 		// store all frontier and explored state here to check in O(1).
